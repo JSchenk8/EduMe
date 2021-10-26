@@ -1,0 +1,27 @@
+{
+  "name": "building-an-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha __tests__/*_test.js --require __tests__/helper.js --recursive --exit",
+    "start": "npx nodemon index.js",
+    "seed": "node db/seed.js",
+    "build": "cd client; npm run build; cd .."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bulma": "^0.9.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "supertest": "^6.0.1"
+  }
+}
