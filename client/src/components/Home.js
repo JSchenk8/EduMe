@@ -8,10 +8,12 @@ export default function Home() {
   const [options, updateOptions] = useState(false)
   const [optionsArray, updateOptionsArray] = useState([',', '.', '!', '?'])
   const [punctuated, updatePunctuated] = useState(false)
+  const [inProgress, updateInProgress] = useState(false)
 
   async function addNumber(event) {
     const newNumbers = numbersToConvert + event.currentTarget.value
     updateNumbersToConvert(newNumbers)
+    updateInProgress(true)
   }
 
   async function findWords() {
@@ -21,15 +23,18 @@ export default function Home() {
       }
       try {
         const { data } = await axios.post('/api/text', dataToSend)
+        console.log(data)
+        console.log(data.length)
+        console.log(Boolean(data))
         if (data.length === 1) {
           const newSentence = textMessage + ' ' + data
           updateTextMessage(newSentence)
-        } else {
+        } else if (data.length > 0) {
           updateOptionsArray(data)
           updateOptions(true)
         }
         updateNumbersToConvert('')
-        
+        updateInProgress(false)
       } catch (err) {
         console.log(err)
         updateNumbersToConvert('')
@@ -75,12 +80,12 @@ export default function Home() {
     <div className="hero-body">
       <div className="phone">
         <div id="keypad" className="has-text-centered">
-          {options && <select id="wordChooser" className="select" onChange={pickWord}>
+          {options && <div className="select"><select id="wordChooser" className="select" onChange={pickWord}>
             <option>Pick a word:</option>
             {optionsArray.map((word, index) => {
               return <option key={index}>{word}</option>
             })}
-          </select>}
+          </select></div>}
           <p className="box" id="textMessage">{textMessage}</p>
           <input
             readOnly
@@ -91,7 +96,7 @@ export default function Home() {
           />
           <div className="columns m-0 box p-0 mt-5 is-mobile" id="keypadColumns">
             <div className="column has-text-centered p-2">
-              <button disabled={options} className="button is-fullwidth mb-1" value={[',', '.', '!', '?']} onClick={punctuate}>1<small>&nbsp;,.!?</small></button>
+              <button disabled={options || inProgress} className="button is-fullwidth mb-1" value={[',', '.', '!', '?']} onClick={punctuate}>1<small>&nbsp;,.!?</small></button>
               <button disabled={options} className="button is-fullwidth mb-1" onClick={addNumber} value={'4'}>4<small>&nbsp;ghi</small></button>
               <button disabled={options} className="button is-fullwidth mb-1" onClick={addNumber} value={'7'}>7<small>&nbsp;pqrs</small></button>
               <button disabled className="button is-fullwidth"></button>
