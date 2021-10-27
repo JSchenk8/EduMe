@@ -1,33 +1,45 @@
 @charset "utf-8";
 @import "../../node_modules/bulma/bulma.sass";
 
+// These are my styles, I have briefly commented them
 
+// SCSS variable for the background colour, to save me typing the hex code over and over again.
+$green: #6ECA9F;
+
+// Style to get the letters in the buttons smaller
 button > small {
   font-size: 0.5rem;
 }
 
+// Button padding to get them to fit better inside the columns for all sizes
 button {
   padding-left: 0.5em !important;
   padding-right: 0.5em !important;
 }
 
+// This is the phone photo background, it is on 'contain' for full size screens to see the whole phone at an appropriate size.
 .phone {
   background-image: url(../images/phone.png);
   background-position: center center;
   background-repeat: no-repeat;
-  // background-attachment: fixed;
   background-size: contain;
   height: 80vh;
 }
 
+// Some background colours.
 .hero {
-  background-color: #6ECA9F;
+  background-color: $green;
 }
 
 .footer {
-  background-color: #6ECA9F;
+  background-color: $green;
 }
 
+#nav-background {
+  background-color: $green;
+}
+
+// This centres the keypad inside its div and positions it at the correct place to sit in the phone. 
 #keypad {
   width: 25vh;
   margin: 10px auto;
@@ -37,21 +49,13 @@ button {
   transform: translate( -50%, -50%);
 }
 
+// This sets the height of the text message display.
 #textMessage {
   height: 250px;
 }
 
-#keypadColumns {
-  // max-width: 90%;
-}
-#nav-background {
-  background-color: #6ECA9F;
-}
 
-// ! #wordChooser {
-
-// }
-
+// These are some media requests which reduce the height of the text area for different sizes, and once the width reduces a certain amount the phone photo becomes 'cover', this means it changes according to screen size. 
 @media only screen and (max-height: 900px){
   #textMessage{
     max-height: 200px;
@@ -69,9 +73,3 @@ button {
     background-size: cover;
   }
 }
-
-// @media only screen and (max-width: 790px){
-//   button {
-//     font-size:0.75rem;
-//   }
-// }

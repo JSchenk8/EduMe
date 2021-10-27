@@ -5,20 +5,16 @@ const dist = path.join(__dirname, 'dist')
 import express from 'express'
 import router from './views/router.js'
 import logger from './middleware/logger.js'
-// import connectToDb from './lib/connectToDb.js'
 import errorHandler from './middleware/errorHandler.js'
 import { port } from './config/environment.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
-//* This is our index file. It imports the necessary files and functions 
-//* And connects our express server to our mongo database and creates the routes
+// This is a simple app connector to use Node and Webpack to start a server and connect it to the API routes. 
 
 const app = express()
 
 async function startServer() {
-  // await connectToDb()
-  // console.log('Successfully connected to mongo')
   app.use(express.json())
   app.use(logger)
   app.use('/api', router)

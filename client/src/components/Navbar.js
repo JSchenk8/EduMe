@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import logo from '../images/logo.png'
 
+// I wanted to add a navbar with a brief explanation of the instructions. Whilst I don't want to teach anyone
+// to suck eggs - I felt it important to show a user how I had gone about the choice to type words. 
+// It is responsive for mobile but otherwise it only serves to display the instructions modal and the EduMe logo. 
 
 
 export default function Navbar() {
@@ -9,6 +12,7 @@ export default function Navbar() {
   const [mobNav, updateMobNav] = useState(false)
   const [display, updateDisplay] = useState(false)
 
+  // Function to toggle the modal display, simply switching between boolean states, which then displays the JSX from line 48. 
   function toggleModal() {
     updateDisplay(!display)
   }
@@ -51,9 +55,9 @@ export default function Navbar() {
           <br /><br />
           <p>By pressing space - you send the numbers through to the backend. This then turns them into letters and suggests a likely word - which it returns</p>
           <br /><br />
-          <p>If the combination of numbers doesn't match any words, nothing is typed and you can start a new word instead.</p>
+          <p>If the combination of numbers doesn't match any words, nothing is typed and you can start a new word instead. If the predictor can't find your word, I'm afraid you have to type it one letter at a time. Sorry!</p>
           <br /><br />
-          <p>Feel free to add punctuation and additional spaces!</p>
+          <p>Feel free to add punctuation and additional spaces! Spaces are automatically added after punctuation.</p>
           <br /><br />
           <p>Many thanks</p>
           <br /><br />

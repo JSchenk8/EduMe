@@ -3,7 +3,7 @@ import wordlist from 'wordlist-english'
 
 
 
-// ! This is the function to convert numbers to letters. It is run through the route /api/text
+//  This is the function to convert numbers to letters. I have commented sections of it, but have also run through it in greater depth in the ReadMe.
 
 
 export default async function typeWord(req, res, next) {
