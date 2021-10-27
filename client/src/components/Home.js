@@ -89,7 +89,7 @@ export default function Home() {
             className="input"
             value={numbersToConvert}
           />
-          <div className="columns m-0 box p-0 mt-5">
+          <div className="columns m-0 box p-0 mt-5 is-mobile" id="keypadColumns">
             <div className="column has-text-centered p-2">
               <button disabled={options} className="button is-fullwidth mb-1" value={[',', '.', '!', '?']} onClick={punctuate}>1<small>&nbsp;,.!?</small></button>
               <button disabled={options} className="button is-fullwidth mb-1" onClick={addNumber} value={'4'}>4<small>&nbsp;ghi</small></button>
